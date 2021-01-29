@@ -69,4 +69,6 @@ raw_data = raw_data.rstrip()
 stats_df.to_csv(f'{wd}/data/scz.genes.out', index=False, sep='\t')
 
 with open(f'{wd}/data/scz.genes.raw', 'w') as fp:
+    fp.write('# VERSION = 108\n')
+    fp.write('COVAR = NSAMP MAC\n')
     fp.write(raw_data)
