@@ -16,7 +16,7 @@ pops:
 	ln -s /broad/finucanelab/carlos/scz_pops/data/pops data/pops
 	touch pops/touchfile
 
-features: pops/touchfile data/scz.genes.out data/scz.raw.out
+features: pops/touchfile data/scz.genes.out data/scz.genes.raw
 	python pops/pops.feature_selection.py \
 		--features data/pops/PoPS.features.txt.gz \
 		--gene_results data/scz \
