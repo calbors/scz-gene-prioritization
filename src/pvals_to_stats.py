@@ -54,6 +54,8 @@ for __, row in stats_df.iterrows():
     for k in ['GENE', 'CHR', 'START', 'STOP', 'NSNPS', 'NPARAM', 'N']:
         row_data += f'{row[k]} '
 
+    row_data += '0 0 '
+
     # Pad correlations with zero
     # Only lower triangle is included
     for j in range(i):
