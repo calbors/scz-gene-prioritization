@@ -7,9 +7,8 @@ venv/touchfile: requirements.txt
 
 clean:
 	rm -rf venv
-	rm -rf pops
 
-zstats: data/meta_results_2021_01_19_17_56_47.csv
+zstats: data/raw/meta_results_2021_01_19_17_56_47.csv data/raw/gene_locs.tsv
 	python src/pvals_to_stats.py
 
 pops:
