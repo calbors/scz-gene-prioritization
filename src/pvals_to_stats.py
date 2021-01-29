@@ -46,7 +46,7 @@ stats_df = stats_df[stats_df['CHR'] != 'X']
 
 raw_data = '' # Str to write into genes.raw
 
-i = 0
+prev_chr = 0
 
 for __, row in stats_df.iterrows():
     row_data = ''
@@ -58,6 +58,10 @@ for __, row in stats_df.iterrows():
 
     # Pad correlations with zero
     # Only lower triangle is included
+    if prev_chr != row['CHR']:
+        i = 0
+        prev_chr = row['CHR']
+
     for j in range(i):
         row_data += '0 '
 
