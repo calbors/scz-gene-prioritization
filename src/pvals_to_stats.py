@@ -41,6 +41,9 @@ stats_df['CHR'] = pd.Categorical(stats_df['CHR'], chr_order)
 stats_df.sort_values(['CHR', 'START'], inplace=True)
 stats_df.reset_index(inplace=True, drop=True)
 
+# Delete this next line once PoPS is fixed
+stats_df = stats_df[stats_df['CHR'] != 'X']
+
 raw_data = '' # Str to write into genes.raw
 
 i = 0
