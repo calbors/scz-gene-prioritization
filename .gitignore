@@ -129,5 +129,6 @@ dmypy.json
 .pyre/
 
 # Data
-/data
-/pops
+data/
+!data/raw/
+pops/

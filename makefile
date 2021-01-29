@@ -15,4 +15,3 @@ pops:
 clean:
 	rm -rf venv
 	rm -rf pops
-
