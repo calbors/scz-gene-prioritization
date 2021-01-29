@@ -133,3 +133,4 @@ data/*
 !data/raw/
 !data/raw/*
 pops/
+jobs/
