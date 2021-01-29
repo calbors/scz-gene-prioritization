@@ -65,5 +65,5 @@ raw_data = raw_data.rstrip()
 
 stats_df.to_csv(f'{wd}/data/scz.genes.out', index=False, sep='\t')
 
-with open(f'{wd}/data/scz.raw.out', 'w') as fp:
+with open(f'{wd}/data/scz.genes.raw', 'w') as fp:
     fp.write(raw_data)
