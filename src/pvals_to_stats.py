@@ -4,7 +4,7 @@ import pandas as pd
 from scipy import stats
 
 wd = str(pathlib.Path(__file__).parent.absolute()) + '/..'
-pvals_df = pd.read_csv(f'{wd}/data/meta_results_2021_01_19_17_56_47.csv')
+pvals_df = pd.read_csv(f'{wd}/data/raw/meta_results_2021_01_19_17_56_47.csv')
 
 pvals_df.set_index('Gene', inplace=True)
 stats_ = pvals_df['P meta'].dropna()
@@ -18,7 +18,7 @@ stats_df['GENE'] = stats_df.index
 stats_df.reset_index(drop=True, inplace=True)
 stats_df['ZSTAT'] = stats_df['P'].apply(stats.norm.isf)
 
-locs_df = pd.read_csv(f'{wd}/data/gene_locs.tsv', sep='\t')
+locs_df = pd.read_csv(f'{wd}/data/raw/gene_locs.tsv', sep='\t')
 
 stats_df = stats_df.merge(locs_df, how='left', left_on='GENE', right_on='Gene stable ID')
 stats_df.drop(columns=['Gene stable ID', 'Gene stable ID version', 'Gene name'], inplace=True)
