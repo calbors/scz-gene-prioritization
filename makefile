@@ -23,5 +23,5 @@ features: pops/touchfile data/scz.genes.out data/scz.genes.raw
 		--out data/scz
 
 scores: data/scz.features
-	mkdir data/scores
+	mkdir -p data/scores
 	qsub src/submit_make_scores.sh
