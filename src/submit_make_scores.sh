@@ -13,7 +13,7 @@ python pops/pops.predict_scores.py \
 	--gene_loc data/pops/gene_loc.txt \
 	--gene_results data/scz \
 	--features data/pops/PoPS.features.txt.gz \
-	--selected_features data/scz.features \
+	--selected_features data/pops/downsampled_features.tsv \
 	--control_features data/pops/control.features \
 	--chromosome ${SGE_TASK_ID} \
 	--out data/scores/scz
