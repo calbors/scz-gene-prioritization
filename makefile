@@ -18,9 +18,9 @@ pops:
 
 features: pops/touchfile data/scz.genes.out data/scz.genes.raw
 	python pops/pops.feature_selection.py \
-		--features data/pops/PoPS.features.txt.gz \
+		--features data/pops/downsampled_features.tsv \
 		--gene_results data/scz \
-		--out data/scz
+		--out data/test
 
 scores: data/scz.features
 	mkdir -p data/scores

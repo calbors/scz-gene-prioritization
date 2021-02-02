@@ -12,8 +12,8 @@ source /broad/finucanelab/carlos/scz_exome_pops/venv/bin/activate
 python pops/pops.predict_scores.py \
 	--gene_loc data/pops/gene_loc.txt \
 	--gene_results data/scz \
-	--features data/pops/PoPS.features.txt.gz \
-	--selected_features data/pops/downsampled_features.tsv \
+	--features data/pops/downsampled_features.tsv \
+	--selected_features data/test.features \
 	--control_features data/pops/control.features \
 	--chromosome ${SGE_TASK_ID} \
 	--out data/scores/scz
