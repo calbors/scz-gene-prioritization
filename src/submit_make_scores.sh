@@ -1,8 +1,8 @@
 #! /bin/bash
 
 #$ -wd /broad/finucanelab/carlos/scz_exome_pops
-#$ -l h_vmem=15G
-#$ -l h_rt=1:00:00
+#$ -l h_vmem=60G
+#$ -l h_rt=30:00:00
 #$ -t 1-22
 #$ -o jobs/scores.out
 #$ -j y
