@@ -22,7 +22,7 @@ for chrom in chroms:
     if not pathlib.Path(fn).exists():
         continue
 
-    print(pd.read_csv(fn).set_index('ENSGID'))
+    print(pd.read_csv(fn, index_col=0))
 
     chrom_dfs.append(
         pd.read_csv(fn)
