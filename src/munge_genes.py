@@ -15,15 +15,15 @@ chroms = list(range(1, 23))
 chrom_dfs = []
 
 for chrom in chroms:
-    filename = f'{wd}/data/scores/scz.{chrom}.results'
+    fn = f'{wd}/data/scores/scz.{chrom}.results'
 
-    if not pathlib.Path(filename).exists():
+    if not pathlib.Path(fn).exists():
         continue
 
     chrom_dfs.append(
-        pd.read_csv(filename)
+        pd.read_csv(fn)
         .set_index('ENSGID')
-        .join(genes_df['Gene name'], how='left')
+        .join(ensembl_to_name['Gene name'], how='left')
         )
 
 results_df = (
