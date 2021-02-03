@@ -9,7 +9,9 @@ genes_df = (
     pd.read_csv(f'{wd}/data/raw/gene_locs.tsv', sep='\t')
     .set_index('Gene stable ID')
     )
-ensembl_to_name = genes_df['Gene name'].rename('Gene')
+ensembl_to_name = genes_df['Gene name']
+
+print(ensembl_to_name)
 
 chroms = list(range(1, 23))
 chrom_dfs = []
@@ -19,6 +21,8 @@ for chrom in chroms:
 
     if not pathlib.Path(fn).exists():
         continue
+
+    print(pd.read_csv(fn).set_index('ENSGID'))
 
     chrom_dfs.append(
         pd.read_csv(fn)
