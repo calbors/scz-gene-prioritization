@@ -24,4 +24,8 @@ features: pops/touchfile data/scz.genes.out data/scz.genes.raw
 
 scores: data/scz.features
 	mkdir -p data/scores
+	touch data/scores/touchfile
 	qsub src/submit_make_scores.sh
+
+results: data/scores/touchfile
+	python src/munge_genes.py
