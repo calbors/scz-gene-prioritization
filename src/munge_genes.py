@@ -23,7 +23,7 @@ for chrom in chroms:
     chrom_dfs.append(
         pd.read_csv(fn)
         .set_index('ENSGID')
-        .join(ensembl_to_name['Gene name'], how='left')
+        .join(ensembl_to_name, how='left')
         )
 
 results_df = (
