@@ -22,10 +22,10 @@ for chrom in chroms:
     if not pathlib.Path(fn).exists():
         continue
 
-    print(pd.read_csv(fn, delim_whitespace=True, index_col=0))
+    print(pd.read_csv(fn, sep='\t', index_col=0))
 
     chrom_dfs.append(
-        pd.read_csv(fn, delim_whitespace=True, index_col=0)
+        pd.read_csv(fn, sep='\t', index_col=0)
         .set_index('ENSGID')
         .join(ensembl_to_name, how='left')
         )
