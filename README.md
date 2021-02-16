@@ -1,1 +1,1 @@
-# scz_exome_pops
+# SCZ Gene Prioritization

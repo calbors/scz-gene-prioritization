@@ -129,8 +129,4 @@ dmypy.json
 .pyre/
 
 # Data
-data/*
-!data/raw/
-!data/raw/*
-pops/
-jobs/
+data
