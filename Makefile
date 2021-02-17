@@ -11,9 +11,16 @@ raw.tgz:
 	mkdir -p data
 	rsync $(REMOTE_HOST_LOGIN)@$(REMOTE_HOST):$(RAW_DATA_PATH) data/raw.tgz
 
-data/raw: data/raw.tgz
+raw: data/raw.tgz
 	mkdir -p data/raw
 	tar -xf data/raw.tgz -C data/raw
+	touch data/raw/touchfile
+
+syngo: data/raw/touchfile
+	mkdir -p data/syngo
+	unzip data/raw/SynGO_bulk_download_release_20180731.zip \
+		-d data/syngo
+	touch data/syngo/touchfile 
 
 venv: venv/touchfile
 
