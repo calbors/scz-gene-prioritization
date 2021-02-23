@@ -22,9 +22,9 @@ syngo: data/raw/touchfile
 		-d data/syngo
 	touch data/syngo/touchfile 
 
-syngo_features: data/syngo/touchfile
+syngo_features.tsv: data/syngo/touchfile
 	mkdir -p data/features
-	python src/syngo_features
+	python src/syngo_features.py
 
 venv: venv/touchfile
 
