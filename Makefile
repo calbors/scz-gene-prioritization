@@ -22,6 +22,10 @@ syngo: data/raw/touchfile
 		-d data/syngo
 	touch data/syngo/touchfile 
 
+syngo_features: data/syngo/touchfile
+	mkdir -p data/features
+	python src/syngo_features
+
 venv: venv/touchfile
 
 venv/touchfile: requirements.txt
