@@ -5,7 +5,7 @@ ifneq (,$(wildcard ./.env))
 endif
 
 clean:
-	echo "Not implemented"
+	rm -rf data
 
 raw.tgz:
 	mkdir -p data
