@@ -6,25 +6,47 @@ endif
 
 clean:
 	rm -rf data
+	rm -rf magma
 
-raw.tgz:
+data/raw.tgz:
 	mkdir -p data
 	rsync $(REMOTE_HOST_LOGIN)@$(REMOTE_HOST):$(RAW_DATA_PATH) data/raw.tgz
 
-raw: data/raw.tgz
+data/raw/touchfile: data/raw.tgz
 	mkdir -p data/raw
 	tar -xf data/raw.tgz -C data/raw
 	touch data/raw/touchfile
 
-syngo: data/raw/touchfile
+data/syngo/touchfile: data/raw/touchfile
 	mkdir -p data/syngo
 	unzip data/raw/SynGO_bulk_download_release_20180731.zip \
 		-d data/syngo
 	touch data/syngo/touchfile 
 
-syngo_features.tsv: data/syngo/touchfile
+data/syngo.tsv: data/syngo/touchfile
 	mkdir -p data/features
 	python src/syngo_features.py
+
+data/processed/touchfile: data/raw/touchfile
+	mkdir -p data/processed
+	python src/process_raw.py
+
+data/magma/scz.genes.annot: magma/touchfile
+	mkdir -p data/magma
+	magma/magma --annotate \
+		--snp-loc data/processed/snp_locs.tsv \
+		--gene-loc data/processed/gene_locs.tsv \
+		--out data/magma/scz
+
+data/magma/scz.genes.out: data/magma/scz.genes.annot
+	magma/magma \
+		--bfile data/raw/g1000_eur \
+		--gene-annot data/magma/scz.genes.annot \
+		--pval data/processed/gwas_p_vals.tsv ncol=Neff \
+		--gene-model snp-wise=mean \
+		--out data/magma/scz
+
+
 
 venv: venv/touchfile
 

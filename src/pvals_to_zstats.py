@@ -1,7 +1,29 @@
-import pathlib
+from utils import get_project_root
 
 import pandas as pd
+import numpy as np
 from scipy import stats
+
+data_dir = get_project_root() + '/data'
+
+exomes_df = pd.read_csv(data_dir + '/processed/exomes_p_vals.tsv', sep='\t')
+eps = 1 - 1e-8
+exomes_df['P_adj'] = 0.5 + eps * (exomes_df['P'] - 0.5)
+exomes_df['ZSTAT'] = exomes_df['P_adj'].apply(stats.norm.isf)
+
+print(exomes_df)
+
+"""
+
+locs_df = pd.read_csv(f'{wd}/data/raw/gene_locs.tsv', sep='\t')
+
+stats_df = stats_df.merge(locs_df, how='left', left_on='GENE', right_on='Gene stable ID')
+stats_df.drop(columns=['Gene stable ID', 'Gene stable ID version', 'Gene name'], inplace=True)
+rename_dict = {
+    'Chromosome/scaffold name' : 'CHR',
+    'Gene start (bp)' : 'START',
+    'Gene end (bp)' : 'STOP'
+    }
 
 wd = str(pathlib.Path(__file__).parent.absolute()) + '/..'
 pvals_df = pd.read_csv(f'{wd}/data/raw/meta_results_2021_01_19_17_56_47.csv')
@@ -78,3 +100,5 @@ with open(f'{wd}/data/scz.genes.raw', 'w') as fp:
     fp.write('# VERSION = 108\n')
     fp.write('COVAR = NSAMP MAC\n')
     fp.write(raw_data)
+
+"""

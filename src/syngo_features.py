@@ -27,7 +27,6 @@ ontology_to_ensembl = ontology_to_hgnc.apply(
     )
 
 # Make SynGO feature matrix
-# features_df = to_features(ensembl_to_ontology)
 features_df = pd.DataFrame(index=list(ontology_to_ensembl.keys()))
     
 for k, v in ontology_to_ensembl.items():
@@ -39,6 +38,4 @@ for k, v in ontology_to_ensembl.items():
 
 features_df = features_df.T
 
-print(features_df)
-
-# features_df.to_csv(f'{wd}/data/features.csv')
+features_df.to_csv(data_dir + '/features/syngo.tsv', sep='\t')

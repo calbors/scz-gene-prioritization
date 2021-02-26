@@ -24,7 +24,7 @@ gene_locs_df['chrom_rank'] = gene_locs_df['CHR'].map(chrom_to_rank)
 gene_locs_df.sort_values(by=['chrom_rank', 'START'], inplace=True)
 gene_locs_df.drop('chrom_rank', axis=1, inplace=True)
 gene_locs_df.reset_index(drop=True, inplace=True)
-gene_locs_df.to_csv(data_dir + '/gene_locs.tsv', sep='\t', index=False)
+gene_locs_df.to_csv(data_dir + '/processed/gene_locs.tsv', sep='\t', index=False)
 
 # GWAS
 autosomes_df = pd.read_csv(
@@ -47,9 +47,9 @@ gwas_df['chrom_rank'] = gwas_df['CHR'].map(chrom_to_rank)
 gwas_df.sort_values(by=['chrom_rank', 'BP'], inplace=True)
 gwas_df.drop('chrom_rank', axis=1, inplace=True)
 
-gwas_df[['SNP', 'CHR', 'BP']].to_csv(data_dir + '/snp_locs.tsv',
+gwas_df[['SNP', 'CHR', 'BP']].to_csv(data_dir + '/processed/snp_locs.tsv',
     sep='\t', index=False)
-gwas_df[['SNP', 'P', 'Neff']].to_csv(data_dir + '/gwas_p_vals.tsv',
+gwas_df[['SNP', 'P', 'Neff']].to_csv(data_dir + '/processed/gwas_p_vals.tsv',
     sep='\t', index=False)
 
 # Exomes
@@ -58,4 +58,4 @@ exomes_df = pd.read_csv(data_dir + '/raw/meta_results_2021_01_19_17_56_47.csv',
 exomes_df.dropna(inplace=True)
 exomes_df.rename({'Gene' : 'ENSGID', 'P meta' : 'P'}, axis=1, inplace=True)
 exomes_df.sort_values(by='P', inplace=True)
-exomes_df.to_csv(data_dir + '/exomes_p_vals.tsv', sep='\t', index=False)
+exomes_df.to_csv(data_dir + '/processed/exomes_p_vals.tsv', sep='\t', index=False)
